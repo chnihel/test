@@ -24,4 +24,20 @@ export class AdminController {
       });
     }
   }
+  @Get()
+  async getAdmin(@Res() response){
+    try {
+      const createadmindata = await this.adminService.getAdmin();
+      return response.status(HttpStatus.ACCEPTED).json({
+        message: 'accepted',
+        createadmindata,
+        statusCode: 200,
+      });
+    } catch (error){
+      return response.status(HttpStatus.BAD_REQUEST).json({
+        message: 'not accepted!',
+        statusCode:400,
+      });
+    }
+  }
   }

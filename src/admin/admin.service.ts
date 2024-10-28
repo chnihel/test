@@ -18,4 +18,8 @@ export class AdminService {
   hashdata(data: string){
     return argon2.hash(data)
   }
+  async getAdmin():Promise<interfaceadmin[]>{
+    const getadmin=await this.adminModel.find()
+    return getadmin
+  }
 }
